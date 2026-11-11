@@ -69,6 +69,26 @@ p { margin: 0 0 1em; }
 .site-nav ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
 .site-nav a { color: var(--text); text-decoration: none; padding-block: 0.25rem; }
 .site-nav a[aria-current='page'] { border-bottom: 2px solid var(--accent); }
+.site-nav ul { align-items: center; }
+
+.menu { position: relative; }
+.menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; padding-block: 0.25rem; min-height: 44px; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary::after { content: ''; width: 0.45rem; height: 0.45rem; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-25%) rotate(45deg); transition: transform 0.15s; }
+.menu[open] summary::after { transform: translateY(15%) rotate(-135deg); }
+.menu summary.current { border-bottom: 2px solid var(--accent); }
+.site-nav .menu-list {
+  position: absolute; left: 0; top: calc(100% + 0.4rem); z-index: 20;
+  display: block; min-width: 15rem; max-width: calc(100vw - 2rem);
+  margin: 0; padding: 0.4rem; list-style: none;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.12);
+}
+.site-nav .menu-list a { display: flex; align-items: center; min-height: 44px; padding: 0.35rem 0.75rem; border-radius: 6px; }
+.site-nav .menu-list a:hover { background: var(--bg); }
+.site-nav .menu-list a[aria-current='page'] { border-bottom: 0; font-weight: 600; color: var(--accent); }
+.site-nav .menu-list .menu-all { border-top: 1px solid var(--line); margin-top: 0.3rem; padding-top: 0.3rem; }
+.site-nav .menu-list .menu-all a { color: var(--muted); font-size: 0.95rem; }
 
 main.wrap { padding-block: 2.5rem 3rem; }
 

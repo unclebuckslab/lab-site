@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Signup from '../components/Signup.astro';
+import { getProjects } from '../lib/projects';
 
 interface Props {
   title?: string;
@@ -17,10 +18,8 @@ const {
 const siteName = "Uncle Buck's Laboratory";
 const pageTitle = title ? `${title} · ${siteName}` : siteName;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const nav = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-];
+const projects = getProjects();
+const inProjects = path === '/projects' || path.startsWith('/projects/');
 const year = new Date().getFullYear();
 ---
 <!doctype html>
@@ -45,9 +44,19 @@ const year = new Date().getFullYear();
         <a class="brand" href="/">{siteName}</a>
         <nav class="site-nav" aria-label="Main">
           <ul>
-            {nav.map((item) => (
-              <li><a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a></li>
-            ))}
+            <li><a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a></li>
+            <li>
+              <details class="menu" data-menu>
+                <summary class={inProjects ? 'current' : undefined}>Projects</summary>
+                <ul class="menu-list">
+                  {projects.map((p) => (
+                    <li><a href={`/projects/${p.id}`} aria-current={path === `/projects/${p.id}` ? 'page' : undefined}>{p.name}</a></li>
+                  ))}
+                  <li class="menu-all"><a href="/projects" aria-current={path === '/projects' ? 'page' : undefined}>All projects</a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a></li>
           </ul>
         </nav>
       </div>
@@ -69,5 +78,20 @@ const year = new Date().getFullYear();
         </nav>
       </div>
     </footer>
+    <script>
+      // The Projects menu works without this; it only closes the menu on Escape or a click elsewhere.
+      const menu = document.querySelector<HTMLDetailsElement>('[data-menu]');
+      if (menu) {
+        document.addEventListener('click', (e) => {
+          if (menu.open && !menu.contains(e.target as Node)) menu.open = false;
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && menu.open) {
+            menu.open = false;
+            menu.querySelector('summary')?.focus();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
