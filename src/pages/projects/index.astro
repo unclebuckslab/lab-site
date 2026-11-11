@@ -5,9 +5,9 @@ import { getProjects } from '../../lib/projects';
 
 const projects = getProjects();
 ---
-<Base title="Projects" description="Everything in Uncle Buck's Laboratory right now, and where each one stands.">
+<Base title="Projects" description="What Uncle Buck's Laboratory has made.">
   <h1>Projects</h1>
-  <p class="lede">Everything in the lab right now, and where each one stands. <span class="pending">[VOICE PENDING]</span></p>
+  <p class="lede">What the lab has made. <span class="pending">[VOICE PENDING]</span></p>
   <ul class="cards" aria-label="Projects">
     {projects.map((project) => <ProjectCard project={project} />)}
   </ul>

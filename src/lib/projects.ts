@@ -21,35 +21,14 @@ export type Project = {
   name: string;
   workingName: boolean;
   type: string;
-  stage: string;
-  status: string;
   priority: number;
   publicUrl: string | null;
   summary: string;
   hasOwnList: boolean;
 };
 
-const SHOWN_STATUSES = new Set(['in-the-lab', 'live']);
-
-// Public labels from handbook/IDENTITY.md.
-const STATUS_LABELS: Record<string, string> = {
-  'in-the-lab': 'In the lab',
-  live: 'Live',
-  paused: 'Paused',
-  archived: 'Archived',
-};
-
-const STAGE_LABELS: Record<string, string> = {
-  idea: 'Idea',
-  explore: 'Explore',
-  define: 'Define',
-  build: 'Build',
-  review: 'Review',
-  launch: 'Launch',
-  operate: 'Operate',
-};
-
-export const STAGES = ['idea', 'explore', 'define', 'build', 'review', 'launch', 'operate'];
+// Only finished, live work goes on the site (decisions/2026-11-11-site-shows-live-work.md).
+const SHOWN_STATUSES = new Set(['live']);
 
 const TYPE_LABELS: Record<string, string> = {
   'recurring-report': 'Recurring report',
@@ -62,8 +41,6 @@ const TYPE_LABELS: Record<string, string> = {
 // Projects with their own email list (decisions/2026-11-10-site-and-newsletters.md).
 const OWN_LISTS = new Set(['ai-money-report']);
 
-export const statusLabel = (s: string) => STATUS_LABELS[s] ?? s;
-export const stageLabel = (s: string) => STAGE_LABELS[s] ?? s;
 export const typeLabel = (t: string) => TYPE_LABELS[t] ?? t;
 
 export function getProjects(): Project[] {
@@ -75,8 +52,6 @@ export function getProjects(): Project[] {
       name: p.name,
       workingName: p.working_name === true,
       type: p.type,
-      stage: p.stage,
-      status: p.status,
       priority: p.priority ?? 99,
       publicUrl: p.public_url ?? null,
       summary: p.summary ?? '',

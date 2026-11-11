@@ -102,14 +102,6 @@ main.wrap { padding-block: 2.5rem 3rem; }
 .card p { color: var(--muted); margin: 0; font-size: 0.98rem; }
 .meta { display: flex; flex-wrap: wrap; gap: 0.4rem 0.75rem; font-size: 0.88rem; color: var(--muted); }
 
-.badge { display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 0.1rem 0.55rem; border-radius: 999px; border: 1px solid currentColor; }
-.badge-live { color: var(--accent); }
-.badge-in-the-lab { color: var(--muted); }
-
-.stages { display: flex; gap: 4px; list-style: none; padding: 0; margin: 0.75rem 0 0.25rem; max-width: var(--measure); }
-.stages li { flex: 1; height: 6px; border-radius: 3px; background: var(--line); }
-.stages li.done { background: color-mix(in srgb, var(--accent) 45%, var(--line)); }
-.stages li.now { background: var(--accent); }
 
 .signup { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; max-width: var(--measure); margin-block: 2rem; }
 .signup h2 { margin-top: 0; font-size: 1.2rem; }
