@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import Signup from '../components/Signup.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showDispatchSignup?: boolean;
+}
+
+const {
+  title,
+  description = "Uncle Buck's Laboratory: research, analysis and building in public.",
+  showDispatchSignup = true,
+} = Astro.props;
+
+const siteName = "Uncle Buck's Laboratory";
+const pageTitle = title ? `${title} · ${siteName}` : siteName;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+];
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- Not indexed until launch. Remove at launch (milestone L1). -->
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">{siteName}</a>
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            {nav.map((item) => (
+              <li><a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+      {showDispatchSignup && <Signup list="dispatch" />}
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>{year} {siteName}. Run by Uncle Buck.</p>
+        <nav aria-label="Legal">
+          <ul>
+            <li><a href="/legal/privacy">Privacy</a></li>
+            <li><a href="/legal/disclosures">Disclosures</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

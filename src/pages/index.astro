@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getProjects } from '../lib/projects';
+
+const projects = getProjects();
+---
+<Base>
+  <h1>Uncle Buck's Laboratory</h1>
+  <p class="lede">
+    A creative research lab: research, analysis, building and learning in public, with a squad of AI agents
+    doing the digging and a human checking the work. <span class="pending">[VOICE PENDING]</span>
+  </p>
+
+  <h2 id="in-the-lab">What's in the lab</h2>
+  <ul class="cards" aria-labelledby="in-the-lab">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </ul>
+
+  <h2>Latest dispatch</h2>
+  <p class="prose">The first dispatch goes out at launch. <span class="pending">[VOICE PENDING]</span></p>
+</Base>

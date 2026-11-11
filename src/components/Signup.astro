@@ -1,0 +1,32 @@
+---
+// Placeholder signup. beehiiv isn't set up yet, so the form is disabled and sends nothing.
+// When it is: swap the form for beehiiv's embed or point `action` at its endpoint, per list.
+interface Props {
+  list: 'dispatch' | 'ai-money-report';
+}
+
+const { list } = Astro.props;
+
+const copy = {
+  dispatch: {
+    heading: 'The lab dispatch',
+    blurb: "What's happening in the lab, the week's best chart, where each project stands, and what we learned.",
+  },
+  'ai-money-report': {
+    heading: 'Get the AI Money Report',
+    blurb: 'A free report every two weeks on where the AI money goes, who wins, and who pays.',
+  },
+}[list];
+
+const id = `email-${list}`;
+---
+<section class="signup" aria-labelledby={`${id}-heading`}>
+  <h2 id={`${id}-heading`}>{copy.heading}</h2>
+  <p>{copy.blurb} <span class="pending">[VOICE PENDING]</span></p>
+  <form data-list={list} onsubmit="return false">
+    <label for={id}>Email address</label>
+    <input id={id} name="email" type="email" autocomplete="email" required disabled />
+    <button type="submit" disabled>Sign up</button>
+  </form>
+  <p class="note">Signups open at launch.</p>
+</section>
