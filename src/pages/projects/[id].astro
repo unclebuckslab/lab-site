@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import Signup from '../../components/Signup.astro';
+import { getProjects, statusLabel, stageLabel, typeLabel, STAGES, type Project } from '../../lib/projects';
+
+export function getStaticPaths() {
+  return getProjects().map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const at = STAGES.indexOf(project.stage);
+---
+<Base title={project.name} description={project.summary}>
+  <div class="prose">
+    <p><a href="/">All projects</a></p>
+    <h1>{project.name}</h1>
+    {project.workingName && <p class="meta">Working name</p>}
+    <div class="meta">
+      <span class={`badge badge-${project.status}`}>{statusLabel(project.status)}</span>
+      <span>{typeLabel(project.type)}</span>
+    </div>
+
+    <p class="lede" style="margin-top: 1rem">{project.summary}</p>
+
+    <h2 id="stage-heading">Where it stands</h2>
+    <p>Stage: <strong>{stageLabel(project.stage)}</strong> ({at + 1} of {STAGES.length})</p>
+    <ol class="stages" aria-labelledby="stage-heading">
+      {STAGES.map((s, i) => (
+        <li class={i < at ? 'done' : i === at ? 'now' : undefined}>
+          <span class="visually-hidden">
+            {stageLabel(s)}{i === at ? ' (current)' : i < at ? ' (done)' : ''}
+          </span>
+        </li>
+      ))}
+    </ol>
+
+    {project.publicUrl && (
+      <p style="margin-top: 1.5rem"><a class="button-link" href={project.publicUrl}>Open {project.name}</a></p>
+    )}
+
+    <h2>About this project</h2>
+    <p>What it is, why the lab is building it, and what's been learned so far. <span class="pending">[VOICE PENDING]</span></p>
+  </div>
+
+  {project.hasOwnList && <Signup list="ai-money-report" />}
+</Base>

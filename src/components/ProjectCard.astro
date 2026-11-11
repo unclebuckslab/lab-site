@@ -1,0 +1,19 @@
+---
+import type { Project } from '../lib/projects';
+import { statusLabel, stageLabel, typeLabel } from '../lib/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+<li class="card">
+  <h3><a href={`/projects/${project.id}`}>{project.name}</a></h3>
+  <div class="meta">
+    <span class={`badge badge-${project.status}`}>{statusLabel(project.status)}</span>
+    <span>{typeLabel(project.type)}</span>
+    <span>Stage: {stageLabel(project.stage)}</span>
+  </div>
+  <p>{project.summary}</p>
+</li>
