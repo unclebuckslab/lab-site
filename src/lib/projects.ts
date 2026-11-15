@@ -25,10 +25,12 @@ export type Project = {
   publicUrl: string | null;
   summary: string;
   hasOwnList: boolean;
+  retired: boolean;
 };
 
-// Only finished, live work goes on the site (decisions/2026-11-11-site-shows-live-work.md).
-const SHOWN_STATUSES = new Set(['live']);
+// The site is a library of finished work: live projects plus retired (archived) ones.
+// Nothing in progress or paused appears (decisions/2026-11-11-site-shows-finished-work.md).
+const SHOWN_STATUSES = new Set(['live', 'archived']);
 
 const TYPE_LABELS: Record<string, string> = {
   'recurring-report': 'Recurring report',
@@ -55,7 +57,9 @@ export function getProjects(): Project[] {
       priority: p.priority ?? 99,
       publicUrl: p.public_url ?? null,
       summary: p.summary ?? '',
-      hasOwnList: OWN_LISTS.has(p.id),
+      hasOwnList: OWN_LISTS.has(p.id) && p.status === 'live',
+      retired: p.status === 'archived',
     }))
-    .sort((a, b) => a.priority - b.priority);
+    // Live work first, then retired work; by priority within each.
+    .sort((a, b) => Number(a.retired) - Number(b.retired) || a.priority - b.priority);
 }

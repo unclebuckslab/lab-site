@@ -18,7 +18,7 @@ const { project } = Astro.props;
     <p><a href="/projects">All projects</a></p>
     <h1>{project.name}</h1>
     {project.workingName && <p class="meta">Working name</p>}
-    <div class="meta"><span>{typeLabel(project.type)}</span></div>
+    <div class="meta"><span>{typeLabel(project.type)}</span>{project.retired && <span>No longer updated</span>}</div>
 
     <p class="lede" style="margin-top: 1rem">{project.summary}</p>
 
