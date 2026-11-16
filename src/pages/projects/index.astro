@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getProjects } from '../../lib/projects';
+
+const projects = getProjects();
+---
+<Base title="Projects" description="Everything Uncle Buck's Laboratory has finished.">
+  <h1>Projects</h1>
+  <p class="lede">Everything the lab has finished, including work that's no longer updated. <span class="pending">[VOICE PENDING]</span></p>
+  <ul class="cards" aria-label="Projects">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </ul>
+</Base>

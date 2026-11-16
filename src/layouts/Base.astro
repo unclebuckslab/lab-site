@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+import Signup from '../components/Signup.astro';
+import { getProjects } from '../lib/projects';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showDispatchSignup?: boolean;
+}
+
+const {
+  title,
+  description = "Uncle Buck's Laboratory: research, analysis and building in public.",
+  showDispatchSignup = true,
+} = Astro.props;
+
+const siteName = "Uncle Buck's Laboratory";
+const pageTitle = title ? `${title} · ${siteName}` : siteName;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const projects = getProjects();
+const inProjects = path === '/projects' || path.startsWith('/projects/');
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- Not indexed until launch. Remove at launch (milestone L1). -->
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">{siteName}</a>
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a></li>
+            <li>
+              <details class="menu" data-menu>
+                <summary class={inProjects ? 'current' : undefined}>Projects</summary>
+                <ul class="menu-list">
+                  {projects.map((p) => (
+                    <li><a href={`/projects/${p.id}`} aria-current={path === `/projects/${p.id}` ? 'page' : undefined}>{p.name}</a></li>
+                  ))}
+                  <li class="menu-all"><a href="/projects" aria-current={path === '/projects' ? 'page' : undefined}>All projects</a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+      {showDispatchSignup && <Signup list="dispatch" />}
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>{year} {siteName}. Run by Uncle Buck.</p>
+        <nav aria-label="Legal">
+          <ul>
+            <li><a href="/legal/privacy">Privacy</a></li>
+            <li><a href="/legal/disclosures">Disclosures</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+    <script>
+      // The Projects menu works without this; it only closes the menu on Escape or a click elsewhere.
+      const menu = document.querySelector<HTMLDetailsElement>('[data-menu]');
+      if (menu) {
+        document.addEventListener('click', (e) => {
+          if (menu.open && !menu.contains(e.target as Node)) menu.open = false;
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && menu.open) {
+            menu.open = false;
+            menu.querySelector('summary')?.focus();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

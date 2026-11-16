@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import Signup from '../../components/Signup.astro';
+import { getProjects, typeLabel, type Project } from '../../lib/projects';
+
+export function getStaticPaths() {
+  return getProjects().map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+<Base title={project.name} description={project.summary}>
+  <div class="prose">
+    <p><a href="/projects">All projects</a></p>
+    <h1>{project.name}</h1>
+    {project.workingName && <p class="meta">Working name</p>}
+    <div class="meta"><span>{typeLabel(project.type)}</span>{project.retired && <span>No longer updated</span>}</div>
+
+    <p class="lede" style="margin-top: 1rem">{project.summary}</p>
+
+    {project.publicUrl && (
+      <p style="margin-top: 1.5rem"><a class="button-link" href={project.publicUrl}>Open {project.name}</a></p>
+    )}
+
+    <h2>About this project</h2>
+    <p>What it is, why the lab made it, and what it found. <span class="pending">[VOICE PENDING]</span></p>
+  </div>
+
+  {project.hasOwnList && <Signup list="ai-money-report" />}
+</Base>

@@ -1,0 +1,105 @@
+# Every lab project. One record each. Fields are defined in registry/README.md.
+# The lab site, the projects board and the weekly briefing all read this file.
+
+projects:
+  - id: ai-money-report
+    name: AI Money Report
+    working_name: true
+    endorsement: from Uncle Buck's Laboratory
+    type: recurring-report
+    stage: build
+    status: in-the-lab
+    show_on_site: true
+    priority: 1
+    repo: unclebuckslab/ai-money-report
+    public_url: null
+    summary: Where the AI money goes, who wins, who pays, and what the filings show that the headlines don't.
+    playbook: playbooks/report.md
+    agents: [researcher, editor, ops]
+    next_milestone: P1
+    notes: Moved into the unclebuckslab org on Nov 5, 2026. Stays private; about 344 Actions minutes in its first 8 days.
+
+  - id: denver-sales
+    name: Denver Neighborhood Sales
+    working_name: false
+    endorsement: from Uncle Buck's Laboratory
+    type: dashboard
+    stage: operate
+    status: live
+    show_on_site: true
+    priority: 3
+    repo: unclebuck20/denver-dashboard
+    public_url: https://unclebuck20.github.io/denver-dashboard/
+    summary: Every arm's-length single-family home sale since 2015 across 17 Denver neighborhoods, refreshed weekly from city open data.
+    playbook: playbooks/data-product.md
+    agents: [ops]
+    next_milestone: M2
+    notes: Reframed as a lab project during the site build (README, page header, project page). Repo stays in the founder's account until outside reviewers are done with the current URL; moving it changes the Pages address with no redirect.
+
+  - id: congress-cards
+    name: Congress Cards
+    working_name: true
+    endorsement: from Uncle Buck's Laboratory
+    type: reference-database
+    stage: define
+    status: in-the-lab
+    show_on_site: true
+    priority: 2
+    repo: null
+    public_url: null
+    summary: A sourced card for every member of Congress covering campaign finance, lobbying, legislation and votes, held to one standard for every party.
+    playbook: playbooks/data-product.md
+    agents: [researcher, editor]
+    next_milestone: M4
+    notes: First project built from the new template. No profiles go public before the LLC exists (milestone S2).
+
+  - id: field-notes
+    name: Field Notes
+    working_name: true
+    endorsement: from Uncle Buck's Laboratory
+    type: writing
+    stage: explore
+    status: in-the-lab
+    show_on_site: false
+    priority: 4
+    repo: unclebuckslab/lab-site
+    public_url: null
+    summary: Short posts from the lab; the first home of the weekly blog.
+    playbook: null
+    agents: [editor]
+    next_milestone: M5
+    notes: Lives inside the lab site rather than its own repo.
+
+  - id: dorkgraphs
+    name: DorkGraphs
+    working_name: false
+    endorsement: from Uncle Buck's Laboratory
+    type: brand
+    stage: define
+    status: in-the-lab
+    show_on_site: false
+    priority: 5
+    repo: unclebuckslab/dorkgraphs
+    public_url: null
+    summary: Daily charts and maps of the American experience, showing how the country got here and where it's headed.
+    playbook: null
+    agents: []
+    next_milestone: null
+    notes: Instagram-only (@dorkgraphs). Its character is a dork data scientist, not a wizard. Delete the duplicate unclebuck20/dorkgraphs once the lab copy is confirmed complete.
+
+  - id: music-oracle
+    name: Music prediction brand
+    working_name: true
+    endorsement: from Uncle Buck's Laboratory
+    type: brand
+    stage: idea
+    status: parked
+    show_on_site: false
+    priority: 6
+    repo: null
+    public_url: null
+    summary: Data-driven predictions for live music, told by a character of its own.
+    playbook: null
+    agents: []
+    next_milestone: null
+    notes: Parked. Launches later under an adjusted scope that doesn't overlap DorkGraphs or Uncle Buck.

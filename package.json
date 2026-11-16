@@ -1,0 +1,27 @@
+{
+  "name": "lab-site",
+  "description": "The website for Uncle Buck's Laboratory",
+  "scripts": {
+    "sync": "node scripts/sync-registry.mjs",
+    "dev": "npm run sync && astro dev",
+    "build": "npm run sync && astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unclebuckslab/lab-site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unclebuckslab/lab-site/issues"
+  },
+  "homepage": "https://github.com/unclebuckslab/lab-site#readme",
+  "dependencies": {
+    "astro": "5.18.2",
+    "js-yaml": "4.3.2"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
