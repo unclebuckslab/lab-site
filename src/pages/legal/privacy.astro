@@ -1,17 +1,46 @@
 ---
 import Base from '../../layouts/Base.astro';
+const updated = 'Draft, not yet in effect';
 ---
-<Base title="Privacy" description="What the lab collects and what it does with it." showDispatchSignup={false}>
+<Base title="Privacy" description="What Uncle Buck's Laboratory collects, why, and what you can do about it." showDispatchSignup={false}>
   <div class="prose">
     <h1>Privacy</h1>
-    <p class="pending">[DRAFT: needs founder review before launch]</p>
+    <p class="pending">[DRAFT: needs founder review, and a lawyer's look, before launch]</p>
+    <p class="meta">Last updated: {updated}</p>
+
+    <p>Uncle Buck's Laboratory is a small research and publishing project. We collect as little about you as we can, and we don't sell any of it.</p>
+
     <h2>What we collect</h2>
-    <p>If you sign up, your email address, kept by our email provider (beehiiv). We use it to send what you signed up for, and you can unsubscribe from any email.</p>
-    <h2>Analytics</h2>
-    <p>We count visits with Cloudflare Web Analytics, which doesn't use cookies or track you across sites.</p>
-    <h2>What we don't do</h2>
-    <p>We don't sell or share your email address.</p>
-    <h2>Questions</h2>
-    <p>Contact address to be added at launch.</p>
+    <ul>
+      <li><strong>Your email address,</strong> only if you sign up for one of our newsletters. If the signup form offers extra choices, such as hearing about Kits, we keep those choices too.</li>
+      <li><strong>Basic email activity</strong> from our email provider: whether an email was delivered, opened or clicked. We use it to see what's worth sending.</li>
+      <li><strong>Anonymous visit counts</strong> for this website: which pages get read, from roughly where, on what kind of device. This doesn't use cookies and doesn't identify you.</li>
+    </ul>
+    <p>We don't collect payment details, accounts or passwords. If that changes, for example when a paid tier opens, this page will say so first.</p>
+
+    <h2>Who handles it</h2>
+    <ul>
+      <li><strong>beehiiv</strong> stores newsletter subscribers and sends our emails.</li>
+      <li><strong>Cloudflare</strong> hosts this site and counts visits with Cloudflare Web Analytics.</li>
+    </ul>
+    <p>They process data on our behalf under their own privacy terms. We don't share your information with anyone else, and we never sell or rent it.</p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>Every email has an unsubscribe link. It works in one click.</li>
+      <li>Ask us to see, correct or delete what we hold about you, and we'll do it. Contact details are below.</li>
+    </ul>
+
+    <h2>How long we keep it</h2>
+    <p>Your email stays on the list until you unsubscribe or ask us to delete it. Visit counts are kept in aggregate only.</p>
+
+    <h2>Kids</h2>
+    <p>This site isn't aimed at children under 13, and we don't knowingly collect their information.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes in a way that matters, the date at the top changes and newsletter subscribers hear about it.</p>
+
+    <h2>Contact</h2>
+    <p><span class="pending">[Lab email and mailing address added once set up]</span></p>
   </div>
 </Base>

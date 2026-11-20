@@ -8,4 +8,4 @@ The website for Uncle Buck's Laboratory. lab-hq's `CLAUDE.md` and handbook apply
 - Copy marked `[VOICE PENDING]` waits for VOICE.md (milestone B1). Don't write brand copy before it exists.
 - Every page meets WCAG AA: real headings, labels on every input, visible focus, 44px tap targets, contrast checked in light and dark.
 - No external scripts or fonts. Analytics is added by Cloudflare at deploy, not in code.
-- Every change is a PR; check the Cloudflare preview before merging.
+- Every change is a PR; check the Cloudflare preview link before merging.
