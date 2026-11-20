@@ -1,17 +1,33 @@
 ---
 import Base from '../../layouts/Base.astro';
+const updated = 'Draft, not yet in effect';
 ---
-<Base title="Disclosures" description="How the lab uses AI, and what it is and isn't." showDispatchSignup={false}>
+<Base title="Disclosures" description="How the lab uses AI, how it handles money and conflicts, and what its work is and isn't." showDispatchSignup={false}>
   <div class="prose">
     <h1>Disclosures</h1>
     <p class="pending">[DRAFT: needs founder review before launch]</p>
-    <h2>How we use AI</h2>
-    <p>AI agents help research, build and draft the lab's work. A person reviews everything before it's published.</p>
+    <p class="meta">Last updated: {updated}</p>
+
+    <h2>How the work gets made</h2>
+    <p>A person decides what to make. AI agents help research, build and draft it. A person checks the work before anything is published. We say this up front because it's how the lab works, not a footnote.</p>
+
+    <h2>Sources</h2>
+    <p>Every number and factual claim we publish links to where it came from. If we can't source it, we don't publish it.</p>
+
     <h2>Not advice</h2>
-    <p>Nothing here is financial, legal or investment advice.</p>
-    <h2>Holdings</h2>
-    <p>How the lab discloses its owner's investments in companies it covers is still being decided.</p>
+    <p>Nothing here is financial, investment, legal or tax advice. We explain where money moves and why; what you do with that is up to you. We don't make stock picks.</p>
+
+    <h2>Money and conflicts</h2>
+    <ul>
+      <li><strong>Sponsors and ads:</strong> none right now. If that changes, sponsored content will be labeled where it appears, and sponsors won't get a say in what we report.</li>
+      <li><strong>Affiliate links:</strong> none right now. If we ever use them, they'll be labeled.</li>
+      <li><strong>Investments:</strong> <span class="pending">[How the lab's owner discloses holdings in companies we cover is still being decided. This line gets the final rule before launch.]</span></li>
+    </ul>
+
     <h2>Corrections</h2>
-    <p>When we get something wrong, we fix it and say what changed.</p>
+    <p>When we get something wrong, we fix it, note what changed and when, and keep the note where readers will see it.</p>
+
+    <h2>Who's behind it</h2>
+    <p>Uncle Buck's Laboratory is run by its owner, who goes by Uncle Buck online. It's an independent project, not connected to the owner's day job or any employer.</p>
   </div>
 </Base>

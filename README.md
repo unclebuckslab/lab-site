@@ -22,6 +22,6 @@ Both commands first pull the project list from lab-hq. If GitHub can't be reache
 | `src/styles/global.css` | All styles, light and dark |
 | `scripts/sync-registry.mjs` | Pulls `registry/projects.yaml` from lab-hq |
 
-## Deploy (not set up yet)
+## Deploy
 
-Cloudflare Pages, connected to this repo: build command `npm run build`, output folder `dist`. Every PR gets a preview link; merging to `main` deploys.
+Cloudflare Workers Builds, connected to this repo: build command `npm run build`, deploy command `npx wrangler deploy`. Every branch gets a preview link; merging to `main` deploys to https://lab-site.unclebuckslab.workers.dev (unclebuckslab.com at launch).
