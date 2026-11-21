@@ -1,6 +1,6 @@
 ---
 // Placeholder signup. beehiiv isn't set up yet, so the form is disabled and sends nothing.
-// When it is: swap the form for beehiiv's embed or point `action` at its endpoint, per list.
+// When it is: the form posts to a small Worker endpoint that calls beehiiv's API (decision 2026-11-21). No beehiiv script.
 interface Props {
   list: 'dispatch' | 'ai-money-report';
 }
@@ -20,13 +20,18 @@ const copy = {
 
 const id = `email-${list}`;
 ---
-<section class="signup" aria-labelledby={`${id}-heading`}>
-  <h2 id={`${id}-heading`}>{copy.heading}</h2>
-  <p>{copy.blurb} <span class="pending">[VOICE PENDING]</span></p>
-  <form data-list={list} onsubmit="return false">
-    <label for={id}>Email address</label>
-    <input id={id} name="email" type="email" autocomplete="email" required disabled />
-    <button type="submit" disabled>Sign up</button>
-  </form>
-  <p class="note">Signups open at launch.</p>
+<section class="signup" id={list} aria-labelledby={`${id}-heading`}>
+  <div class="wrap">
+    <div class="signup-text">
+      <p class="mono">Free · [cadence]</p>
+      <h2 id={`${id}-heading`}>{copy.heading}</h2>
+      <p>{copy.blurb} <span class="pending">[VOICE PENDING]</span></p>
+    </div>
+    <form data-list={list} onsubmit="return false">
+      <label for={id}>Email address</label>
+      <input id={id} name="email" type="email" autocomplete="email" required disabled />
+      <button type="submit" disabled>Subscribe</button>
+      <p class="note mono">Signups open at launch.</p>
+    </form>
+  </div>
 </section>

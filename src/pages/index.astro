@@ -1,22 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import LeadFeature from '../components/LeadFeature.astro';
+import WorkRow from '../components/WorkRow.astro';
 import { getProjects } from '../lib/projects';
 
 const projects = getProjects();
+const [lead, ...rest] = projects;
+const num = (i: number) => String(i + 1).padStart(3, '0');
 ---
 <Base>
-  <h1>Uncle Buck's Laboratory</h1>
-  <p class="lede">
-    A creative research lab: research, analysis, building and learning in public, with a squad of AI agents
-    doing the digging and a human checking the work. <span class="pending">[VOICE PENDING]</span>
-  </p>
+  <h1 class="visually-hidden">Uncle Buck's Laboratory</h1>
+  <div class="opening">
+    <p>A creative research lab: research, analysis and building in public, with AI agents doing the digging and a person checking the work.</p>
+    <span class="pending">[VOICE PENDING]</span>
+  </div>
 
-  <h2 id="projects">Projects</h2>
-  <ul class="cards" aria-labelledby="projects">
-    {projects.map((project) => <ProjectCard project={project} />)}
-  </ul>
-
-  <h2>Latest dispatch</h2>
-  <p class="prose">The first dispatch goes out at launch. <span class="pending">[VOICE PENDING]</span></p>
+  <h2 class="visually-hidden" id="work">Work</h2>
+  {lead && <LeadFeature project={lead} number={num(0)} />}
+  {rest.length > 0 && (
+    <ul class="rows" aria-labelledby="work">
+      {rest.map((project, i) => <WorkRow project={project} number={num(i + 1)} />)}
+    </ul>
+  )}
 </Base>

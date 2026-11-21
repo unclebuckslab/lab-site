@@ -37,7 +37,8 @@ const TYPE_LABELS: Record<string, string> = {
   dashboard: 'Dashboard',
   'reference-database': 'Reference database',
   writing: 'Writing',
-  brand: 'Brand',
+  brand: 'Data brand',
+  product: 'Product',
 };
 
 // Projects with their own email list (decisions/2026-11-10-site-and-newsletters.md).

@@ -1,0 +1,27 @@
+---
+// The top live project, shown large on the home page with its own image in its own style.
+import { Image } from 'astro:assets';
+import Kind from './Kind.astro';
+import type { Project } from '../lib/projects';
+import { projectPage } from '../data/project-pages';
+
+interface Props { project: Project; number: string }
+const { project, number } = Astro.props;
+const page = projectPage(project.id);
+const cadence = page?.facts.find((f) => f.label === 'Updated')?.value;
+const source = page?.facts.find((f) => f.label === 'Source')?.value;
+---
+<article class="lead" aria-labelledby={`lead-${project.id}`}>
+  <div class="lead-text">
+    <p class="mono">{number}{cadence && ` · Updated: ${cadence}`}</p>
+    <Kind type={project.type} />
+    <h2 id={`lead-${project.id}`}><a href={`/projects/${project.id}`}>{project.name}</a></h2>
+    <p>{project.summary}</p>
+    {source && <p class="mono">Source: {source}</p>}
+  </div>
+  {page && (
+    <a class="lead-media" href={`/projects/${project.id}`} tabindex="-1" aria-hidden="true">
+      <Image src={page.tile.src} alt="" widths={[548]} sizes="(min-width: 64rem) 40rem, 100vw" loading="eager" />
+    </a>
+  )}
+</article>

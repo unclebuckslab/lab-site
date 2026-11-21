@@ -1,4 +1,8 @@
 ---
+import '@fontsource-variable/fraunces/opsz.css';
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
 import Signup from '../components/Signup.astro';
 import { getProjects } from '../lib/projects';
@@ -41,22 +45,22 @@ const year = new Date().getFullYear();
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/">{siteName}</a>
+        <a class="brand" href="/"><span>Uncle Buck&rsquo;s</span><span>Laboratory</span></a>
         <nav class="site-nav" aria-label="Main">
           <ul>
-            <li><a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a></li>
             <li>
               <details class="menu" data-menu>
-                <summary class={inProjects ? 'current' : undefined}>Projects</summary>
+                <summary class={inProjects ? 'current' : undefined}>Work</summary>
                 <ul class="menu-list">
                   {projects.map((p) => (
                     <li><a href={`/projects/${p.id}`} aria-current={path === `/projects/${p.id}` ? 'page' : undefined}>{p.name}</a></li>
                   ))}
-                  <li class="menu-all"><a href="/projects" aria-current={path === '/projects' ? 'page' : undefined}>All projects</a></li>
+                  <li class="menu-all"><a href="/projects" aria-current={path === '/projects' ? 'page' : undefined}>All work</a></li>
                 </ul>
               </details>
             </li>
             <li><a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a></li>
+            {showDispatchSignup && <li><a class="nav-subscribe" href="#dispatch">Subscribe</a></li>}
           </ul>
         </nav>
       </div>
@@ -64,16 +68,17 @@ const year = new Date().getFullYear();
 
     <main id="main" class="wrap">
       <slot />
-      {showDispatchSignup && <Signup list="dispatch" />}
     </main>
+    {showDispatchSignup && <Signup list="dispatch" />}
 
     <footer class="site-footer">
       <div class="wrap">
-        <p>{year} {siteName}. Run by Uncle Buck.</p>
+        <p class="mono">{year} {siteName}. Run by Uncle Buck.</p>
         <nav aria-label="Legal">
           <ul>
             <li><a href="/legal/privacy">Privacy</a></li>
             <li><a href="/legal/disclosures">Disclosures</a></li>
+            <li><a href="/licenses/Fraunces-OFL.txt">Font licenses</a></li>
           </ul>
         </nav>
       </div>
