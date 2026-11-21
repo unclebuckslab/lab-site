@@ -20,7 +20,7 @@ jobs:
       - name: Workers config
         run: npx wrangler deploy --dry-run
       - name: Noindex header ships
-        run: grep -q "X-Robots-Tag: noindex" dist/_headers
+        run: 'grep -q "X-Robots-Tag: noindex" dist/_headers'
       - name: No private registry values in the built site
         run: npm run check:privacy
       - name: Install Chromium for the accessibility check
