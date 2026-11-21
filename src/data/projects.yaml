@@ -103,3 +103,20 @@ projects:
     agents: []
     next_milestone: null
     notes: Parked. Launches later under an adjusted scope that doesn't overlap DorkGraphs or Uncle Buck.
+
+  - id: annual-outings
+    name: Annual Outings
+    working_name: true
+    endorsement: from Uncle Buck's Laboratory
+    type: product
+    stage: build
+    status: in-the-lab
+    show_on_site: false
+    priority: 2
+    repo: unclebuckslab/annual-outings
+    public_url: null
+    summary: A free app that helps one group of friends pick, commit to and book the trip they take every year.
+    playbook: null
+    agents: []
+    next_milestone: null
+    notes: The lab's first product people sign up for and use. Free to users; friends' crews first; the build is documented as content and packaged into Kits. Runs on its own timeline, not the launch's, but a real V1 is wanted soon. Plan docs live in Claude Docs (Decision Brief Nov 19, V1 PRD, Build Plan to Pilot) and predate the free decision, so their pricing and payment parts are out of date. Code lives in unclebuckslab/annual-outings.

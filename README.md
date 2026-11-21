@@ -22,6 +22,13 @@ Both commands first pull the project list from lab-hq. If GitHub can't be reache
 | `src/styles/global.css` | All styles, light and dark |
 | `scripts/sync-registry.mjs` | Pulls `registry/projects.yaml` from lab-hq |
 
-## Deploy (not set up yet)
+## Deploy
 
-Cloudflare Pages, connected to this repo: build command `npm run build`, output folder `dist`. Every PR gets a preview link; merging to `main` deploys.
+Cloudflare Workers static assets (`wrangler.jsonc`), connected to this repo through Workers Builds.
+
+- Build command `npm run build` (runs the registry sync first); deploy command `npx wrangler deploy`; preview command `npx wrangler preview`.
+- Merging to `main` deploys to unclebuckslab.com. Every PR gets a preview link on workers.dev, behind Cloudflare Access.
+- Cloudflare holds the build token. No agent or person needs a deploy token.
+- `public/_headers` keeps the whole site out of search engines until launch. Remove that rule on launch day.
+- Analytics is Cloudflare Web Analytics, switched on in the dashboard. There is no analytics code here.
+- Rollback: Workers & Pages > lab-site > Deployments > Rollback, then revert the bad commit on `main`.
