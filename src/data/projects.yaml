@@ -51,7 +51,7 @@ projects:
     type: brand
     stage: define
     status: in-the-lab
-    show_on_site: false
+    show_on_site: true
     priority: 5
     public_url: null
     summary: Daily charts and maps of the American experience, showing how the country got here and where it's headed.
@@ -73,7 +73,7 @@ projects:
     type: product
     stage: build
     status: in-the-lab
-    show_on_site: false
+    show_on_site: true
     priority: 2
     public_url: null
     summary: A free app that helps one group of friends pick, commit to and book the trip they take every year.

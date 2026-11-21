@@ -33,9 +33,6 @@ export type Project = {
 // "In the lab" (Garrett, Nov 21, 2026; overrides the finished-work rule until the launch review).
 const SHOWN_STATUSES = new Set(['live', 'archived', 'in-the-lab']);
 
-// Temporary: projects the registry still marks show_on_site: false that Garrett wants on the site before launch.
-// Remove once lab-hq #14 (show_on_site: true for both) is merged.
-const PRE_LAUNCH_SHOW = new Set(['dorkgraphs', 'annual-outings']);
 
 const TYPE_LABELS: Record<string, string> = {
   'recurring-report': 'Recurring report',
@@ -59,7 +56,7 @@ export const statusLabel = (p: { retired: boolean; inLab: boolean }) =>
 export function getProjects(): Project[] {
   const data = yaml.load(raw) as { projects: RegistryProject[] };
   return data.projects
-    .filter((p) => (p.show_on_site === true || PRE_LAUNCH_SHOW.has(p.id)) && SHOWN_STATUSES.has(p.status))
+    .filter((p) => p.show_on_site === true && SHOWN_STATUSES.has(p.status))
     .map((p) => ({
       id: p.id,
       name: p.name,
