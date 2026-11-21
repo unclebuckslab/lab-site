@@ -1,0 +1,17 @@
+// Cloudflare Workers config for the lab site: static assets only, no Worker code.
+// The Worker name must match the one in the Cloudflare dashboard.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "lab-site",
+  "compatibility_date": "2026-11-21",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  // Production lives on unclebuckslab.com, attached in the dashboard. workers.dev is off for production.
+  "workers_dev": false,
+  // Pull-request previews stay on workers.dev, behind Cloudflare Access.
+  "preview_urls": true,
+  "previews": {}
+}
