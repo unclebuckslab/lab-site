@@ -1,0 +1,278 @@
+{
+  "$description": "Uncle Buck's Laboratory umbrella design tokens: Workshop layout, Fog palette. DTCG format. Source of truth until it moves to lab-hq/design (decision 2026-11-21). Every text and label pair passes WCAG 2.2 AA in both modes; ratios are checked by scripts/check-contrast.mjs.",
+  "font": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": [
+        "Fraunces Variable",
+        "Georgia",
+        "serif"
+      ]
+    },
+    "sans": {
+      "$value": [
+        "IBM Plex Sans Variable",
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$value": [
+        "IBM Plex Mono",
+        "ui-monospace",
+        "monospace"
+      ]
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "rule": {
+      "$value": {
+        "value": 1.5,
+        "unit": "px"
+      },
+      "$description": "Hard rules and borders"
+    },
+    "tap": {
+      "$value": {
+        "value": 44,
+        "unit": "px"
+      },
+      "$description": "Minimum tap target (house rule)"
+    },
+    "measure": {
+      "$value": {
+        "value": 40,
+        "unit": "rem"
+      }
+    },
+    "wide": {
+      "$value": {
+        "value": 80,
+        "unit": "rem"
+      }
+    }
+  },
+  "color": {
+    "$type": "color",
+    "light": {
+      "ground": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#E9ECEA"
+        },
+        "$description": "Overcast gray"
+      },
+      "surface": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F5F6F4"
+        }
+      },
+      "tint": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#D3DDD6"
+        },
+        "$description": "Background tint only, never a label or border"
+      },
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#1E2326"
+        },
+        "$description": "Basalt"
+      },
+      "text-secondary": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#4E565B"
+        }
+      },
+      "rule-strong": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#1E2326"
+        }
+      },
+      "rule": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#7F888C"
+        },
+        "$description": "UI borders; 3:1 minimum"
+      },
+      "accent": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#A2462A"
+        },
+        "$description": "Madrona rust: the signup button and focus ring only. Never in the header (Garrett, Nov 21)"
+      },
+      "on-accent": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#FFFFFF"
+        }
+      },
+      "lead": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#24473A"
+        },
+        "$description": "Fir: lead feature block"
+      },
+      "on-lead": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F5F6F4"
+        }
+      },
+      "kind-dashboard": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#24473A"
+        },
+        "$description": "Fir"
+      },
+      "kind-recurring-report": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#4F7386"
+        },
+        "$description": "Puget Sound slate"
+      },
+      "kind-brand": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#566841"
+        },
+        "$description": "Moss"
+      },
+      "kind-reference-database": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#4F6250"
+        },
+        "$description": "Deep lichen"
+      },
+      "kind-writing": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#1E2326"
+        },
+        "$description": "Basalt"
+      },
+      "on-kind": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F5F6F4"
+        }
+      }
+    },
+    "dark": {
+      "ground": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#161B1D"
+        }
+      },
+      "surface": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#1F2528"
+        }
+      },
+      "tint": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#1F2528"
+        }
+      },
+      "text": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#E6E9E7"
+        }
+      },
+      "text-secondary": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#A8B1B5"
+        }
+      },
+      "rule-strong": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#8A9499"
+        }
+      },
+      "rule": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#6C767A"
+        }
+      },
+      "accent": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#E38D6E"
+        }
+      },
+      "on-accent": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#161B1D"
+        }
+      },
+      "lead": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#1F2528"
+        }
+      },
+      "on-lead": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#E6E9E7"
+        }
+      },
+      "kind-dashboard": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#8FBBA6"
+        }
+      },
+      "kind-recurring-report": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#97B6C4"
+        }
+      },
+      "kind-brand": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#B4C28C"
+        }
+      },
+      "kind-reference-database": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#C6D1C2"
+        }
+      },
+      "kind-writing": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#E6E9E7"
+        }
+      },
+      "on-kind": {
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#161B1D"
+        }
+      }
+    }
+  }
+}

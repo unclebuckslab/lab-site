@@ -6,9 +6,9 @@ on:
 permissions:
   contents: read
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,7 +17,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Check the Workers config
+      - name: Workers config
         run: npx wrangler deploy --dry-run
-      - name: Check the noindex header ships
-        run: grep -q "X-Robots-Tag: noindex" dist/_headers
+      - name: Noindex header ships
+        run: 'grep -q "X-Robots-Tag: noindex" dist/_headers'
+      - name: No private registry values in the built site
+        run: npm run check:privacy
+      - name: Install Chromium for the accessibility check
+        run: npx playwright install --with-deps chromium
+      - name: Accessibility (axe WCAG 2.2 AA + 44px targets, light and dark)
+        run: npm run check:a11y

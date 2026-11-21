@@ -1,34 +1,71 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Signup from '../../components/Signup.astro';
-import { getProjects, typeLabel, type Project } from '../../lib/projects';
+import Kind from '../../components/Kind.astro';
+import { getProjects, statusLabel, type Project } from '../../lib/projects';
+import { projectPage } from '../../data/project-pages';
 
 export function getStaticPaths() {
   return getProjects().map((project) => ({ params: { id: project.id }, props: { project } }));
 }
 
-interface Props {
-  project: Project;
-}
-
+interface Props { project: Project }
 const { project } = Astro.props;
+const page = projectPage(project.id);
 ---
 <Base title={project.name} description={project.summary}>
-  <div class="prose">
-    <p><a href="/projects">All projects</a></p>
-    <h1>{project.name}</h1>
-    {project.workingName && <p class="meta">Working name</p>}
-    <div class="meta"><span>{typeLabel(project.type)}</span>{project.retired && <span>No longer updated</span>}</div>
+  <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/projects">Work</a> / {project.name}</nav>
 
-    <p class="lede" style="margin-top: 1rem">{project.summary}</p>
-
+  <header class="project-head">
+    <div class="project-head-text">
+      <Kind type={project.type} />
+      <h1>{project.name}</h1>
+      {project.workingName && <p class="mono secondary">Working name</p>}
+      <p class="summary">{project.summary}</p>
+      <p class="mono secondary">from Uncle Buck&rsquo;s Laboratory · {statusLabel(project)}</p>
+    </div>
     {project.publicUrl && (
-      <p style="margin-top: 1.5rem"><a class="button-link" href={project.publicUrl}>Open {project.name}</a></p>
+      <div class="actions">
+        <a class="button primary" href={project.publicUrl}>Open {project.name.split(' ')[0] === 'Denver' ? 'the dashboard' : project.name}</a>
+        {page?.secondaryLink && <a class="button" href={page.secondaryLink.href}>{page.secondaryLink.label}</a>}
+      </div>
     )}
+  </header>
 
-    <h2>About this project</h2>
-    <p>What it is, why the lab made it, and what it found. <span class="pending">[VOICE PENDING]</span></p>
-  </div>
+  {page && (
+    <dl class="facts">
+      {page.facts.map((f) => (
+        <div><dt>{f.label}</dt><dd>{f.value}</dd></div>
+      ))}
+    </dl>
+  )}
+
+  {page?.figure && (
+    <figure class="figure">
+      <Image src={page.figure.src} alt={page.figure.alt} widths={[680]} sizes="(min-width: 80rem) 75rem, 100vw" />
+      <figcaption class="mono secondary">{page.figure.caption}</figcaption>
+    </figure>
+  )}
+
+  {page && (
+    <section class="how" aria-labelledby="how">
+      <h2 id="how">How it&rsquo;s made</h2>
+      <dl>
+        {page.howMade.map((h) => (
+          <div><dt>{h.label}</dt><dd>{h.text}</dd></div>
+        ))}
+      </dl>
+      {page.methodsUrl && <p class="mono" style="margin-top: 1rem"><a href={page.methodsUrl}>Methods and code on GitHub</a></p>}
+    </section>
+  )}
+
+  {!page && (
+    <div class="prose">
+      <h2>About this project</h2>
+      <p>What it is, why the lab made it, and what it found. <span class="pending">[VOICE PENDING]</span></p>
+    </div>
+  )}
 
   {project.hasOwnList && <Signup list="ai-money-report" />}
 </Base>

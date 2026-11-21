@@ -1,0 +1,7 @@
+---
+import { typeLabel } from '../lib/projects';
+interface Props { type: string }
+const { type } = Astro.props;
+const known = ['dashboard', 'recurring-report', 'brand', 'reference-database', 'writing', 'product'];
+---
+<span class={`kind kind-${known.includes(type) ? type : 'other'}`}>{typeLabel(type)}</span>

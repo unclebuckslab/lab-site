@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getThoughts, formatDate } from '../../lib/thoughts';
+
+const posts = await getThoughts();
+---
+<Base title="Thoughts" description="Writing from Uncle Buck's Laboratory.">
+  <div class="page-head">
+    <h1>Thoughts</h1>
+    <p class="lede">Notes, essays and things learned along the way. <span class="pending">[VOICE PENDING]</span></p>
+  </div>
+  {posts.length === 0 ? (
+    <p class="mono secondary empty">Nothing posted yet.</p>
+  ) : (
+    <ul class="rows thoughts-rows" aria-label="Posts">
+      {posts.map((post) => (
+        <li class="row">
+          <span class="row-num mono"><time datetime={post.data.date.toISOString().slice(0, 10)}>{formatDate(post.data.date)}</time></span>
+          <div class="row-body">
+            <h2 class="post-title"><a href={`/thoughts/${post.id}`}>{post.data.title}</a></h2>
+            {post.data.summary && <p>{post.data.summary}</p>}
+            {post.data.draft && <p class="mono">Draft · not on the live site</p>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>
