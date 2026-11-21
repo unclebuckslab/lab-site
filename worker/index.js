@@ -57,7 +57,9 @@ export async function subscribe(request, env, fetchImpl = fetch) {
   });
 
   if (!res.ok) {
-    console.error(`subscribe: beehiiv returned ${res.status}`);
+    // Log beehiiv's error text for debugging, with any email address masked.
+    const detail = (await res.text().catch(() => '')).slice(0, 500).replace(/[^\s"@]+@[^\s"@]+/g, '[email]');
+    console.error(`subscribe: beehiiv returned ${res.status} ${detail}`);
     return redirect(url, '/signup/error');
   }
   return redirect(url, '/signup/thanks');
