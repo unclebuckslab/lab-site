@@ -21,7 +21,7 @@ const source = page?.facts.find((f) => f.label === 'Source')?.value;
   </div>
   {page && (
     <a class="lead-media" href={`/projects/${project.id}`} tabindex="-1" aria-hidden="true">
-      <Image src={page.tile.src} alt="" widths={[548]} sizes="(min-width: 64rem) 40rem, 100vw" loading="eager" />
+      <Image src={page.tile.src} alt="" widths={[600, 1200]} sizes="(min-width: 64rem) 40rem, 100vw" loading="eager" />
     </a>
   )}
 </article>

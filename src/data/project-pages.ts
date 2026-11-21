@@ -19,12 +19,12 @@ export const PROJECT_PAGES: Record<string, ProjectPage> = {
   'denver-sales': {
     tile: {
       src: denverMap,
-      alt: 'Map of Denver with one dot per home sale since 2015, shaded by price, clustered in 17 neighborhoods.',
+      alt: 'Map of the 17 Denver neighborhoods with one dot per home, shaded by its latest sale price; darker dots cost more.',
     },
     figure: {
       src: denverChart,
       alt: 'Chart of every sale price since 2015 in Washington Park and West Highland, with a rolling median line for each rising over time.',
-      caption: 'Every sale since 2015 in two of the 17 neighborhoods, as the dashboard shows it. Screenshot, Nov 20, 2026.',
+      caption: 'Every sale since 2015 in two of the 17 neighborhoods, as the dashboard shows it. Captured Nov 21, 2026.',
     },
     facts: [
       { label: 'Updated', value: 'Weekly, Mondays' },
