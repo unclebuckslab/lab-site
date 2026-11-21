@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Kind from './Kind.astro';
-import type { Project } from '../lib/projects';
+import { statusLabel, type Project } from '../lib/projects';
 import { projectPage } from '../data/project-pages';
 
 interface Props { project: Project; number: string }
@@ -15,7 +15,7 @@ const cadence = page?.facts.find((f) => f.label === 'Updated')?.value;
     <Kind type={project.type} />
     <h3><a href={`/projects/${project.id}`}>{project.name}</a></h3>
     <p>{project.summary}</p>
-    <p class="mono">{project.retired ? 'Retired · no longer updated' : 'Live'}{cadence && !project.retired && ` · Updated: ${cadence}`}</p>
+    <p class="mono">{statusLabel(project)}{cadence && !project.retired && !project.inLab && ` · Updated: ${cadence}`}</p>
   </div>
   {page && (
     <a class="row-thumb" href={`/projects/${project.id}`} tabindex="-1" aria-hidden="true">

@@ -5,7 +5,8 @@ import WorkRow from '../components/WorkRow.astro';
 import { getProjects } from '../lib/projects';
 
 const projects = getProjects();
-const [lead, ...rest] = projects;
+const lead = projects.find((p) => !p.inLab && !p.retired);
+const rest = projects.filter((p) => p !== lead);
 const num = (i: number) => String(i + 1).padStart(3, '0');
 ---
 <Base>

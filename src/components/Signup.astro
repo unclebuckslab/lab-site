@@ -23,14 +23,14 @@ const id = `email-${list}`;
 <section class="signup" id={list} aria-labelledby={`${id}-heading`}>
   <div class="wrap">
     <div class="signup-text">
-      <p class="mono">Free · [cadence]</p>
+      <p class="mono">Email newsletter · free · [cadence]</p>
       <h2 id={`${id}-heading`}>{copy.heading}</h2>
       <p>{copy.blurb} <span class="pending">[VOICE PENDING]</span></p>
     </div>
     <form data-list={list} onsubmit="return false">
       <label for={id}>Email address</label>
       <input id={id} name="email" type="email" autocomplete="email" required disabled />
-      <button type="submit" disabled>Subscribe</button>
+      <button type="submit" disabled>Sign up</button>
       <p class="note mono">Signups open at launch.</p>
     </form>
   </div>

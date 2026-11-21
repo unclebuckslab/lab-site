@@ -59,8 +59,8 @@ const year = new Date().getFullYear();
                 </ul>
               </details>
             </li>
+            <li><a href="/thoughts" aria-current={path === '/thoughts' || path.startsWith('/thoughts/') ? 'page' : undefined}>Thoughts</a></li>
             <li><a href="/about" aria-current={path === '/about' ? 'page' : undefined}>About</a></li>
-            {showDispatchSignup && <li><a class="nav-subscribe" href="#dispatch">Subscribe</a></li>}
           </ul>
         </nav>
       </div>

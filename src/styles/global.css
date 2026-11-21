@@ -14,7 +14,7 @@ body {
 }
 
 a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
-a:hover { color: var(--color-accent); text-decoration-thickness: 2px; }
+a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.05; letter-spacing: -0.015em; margin: 0; }
@@ -50,8 +50,6 @@ img { max-width: 100%; height: auto; display: block; }
   text-decoration: none; color: var(--color-text); background: transparent; cursor: pointer;
 }
 .site-nav > ul > li > a[aria-current='page'], .site-nav summary.current { background: var(--color-text); color: var(--color-ground); }
-.site-nav .nav-subscribe { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); }
-.site-nav .nav-subscribe:hover { color: var(--color-on-accent); text-decoration: underline; }
 
 .menu { position: relative; }
 .menu summary { list-style: none; }
@@ -176,3 +174,20 @@ main { padding-bottom: 1rem; }
 .lede { font-size: 1.1875rem; color: var(--color-text-secondary); max-width: var(--size-measure); }
 .lead-text p.mono { font-size: 0.8125rem; }
 .crumbs a { display: inline-flex; align-items: center; min-height: var(--size-tap); }
+
+/* Thoughts */
+.row h2.post-title { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.row h2.post-title a { text-decoration: none; }
+.row-num time { white-space: nowrap; }
+.thoughts-rows .row-num { width: 7rem; }
+.empty { padding-block: 2rem 1rem; border-top: var(--size-rule) solid var(--color-rule-strong); }
+.post { max-width: 44rem; }
+.post-head { padding-block: 1.25rem 1.5rem; border-bottom: var(--size-rule) solid var(--color-rule-strong); margin-bottom: 1.75rem; }
+.post-head h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1; font-variation-settings: 'opsz' 144; margin-bottom: 0.6rem; }
+.post-body { font-size: 1.125rem; line-height: 1.7; }
+.post-body h2 { font-size: 1.75rem; margin: 2em 0 0.5em; }
+.post-body h3 { font-size: 1.35rem; margin: 1.6em 0 0.4em; }
+.post-body a { text-decoration-thickness: 1px; }
+.post-body blockquote { margin: 1.5em 0; padding-left: 1.25rem; border-left: var(--size-rule) solid var(--color-rule-strong); color: var(--color-text-secondary); }
+.post-body img { border: var(--size-rule) solid var(--color-rule-strong); }
+.post-body code { font-family: var(--font-mono); font-size: 0.9em; }
