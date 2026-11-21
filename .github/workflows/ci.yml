@@ -17,6 +17,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Signup Worker tests
+        run: npm run test:worker
       - name: Workers config
         run: npx wrangler deploy --dry-run
       - name: Noindex header ships

@@ -1,6 +1,7 @@
 ---
-// Placeholder signup. beehiiv isn't set up yet, so the form is disabled and sends nothing.
-// When it is: the form posts to a small Worker endpoint that calls beehiiv's API (decision 2026-11-21). No beehiiv script.
+// Email signup. The form posts to /api/subscribe (worker/index.js), which calls beehiiv's API. No beehiiv script.
+// Works without JavaScript. Until launch (src/lib/env.ts) it is live only on PR previews; the live site shows it disabled.
+import { signupsOpen } from '../lib/env';
 interface Props {
   list: 'dispatch' | 'ai-money-report';
 }
@@ -27,11 +28,25 @@ const id = `email-${list}`;
       <h2 id={`${id}-heading`}>{copy.heading}</h2>
       <p>{copy.blurb} <span class="pending">[VOICE PENDING]</span></p>
     </div>
-    <form data-list={list} onsubmit="return false">
-      <label for={id}>Email address</label>
-      <input id={id} name="email" type="email" autocomplete="email" required disabled />
-      <button type="submit" disabled>Sign up</button>
-      <p class="note mono">Signups open at launch.</p>
-    </form>
+    {signupsOpen ? (
+      <form method="post" action="/api/subscribe">
+        <input type="hidden" name="list" value={list} />
+        <div class="hp" aria-hidden="true">
+          <label for={`${id}-website`}>Leave this empty</label>
+          <input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <label for={id}>Email address</label>
+        <input id={id} name="email" type="email" autocomplete="email" maxlength="254" required />
+        <button type="submit">Sign up</button>
+        <p class="note mono">Free. Unsubscribe any time. <a href="/legal/privacy">Privacy</a></p>
+      </form>
+    ) : (
+      <form data-list={list} onsubmit="return false">
+        <label for={id}>Email address</label>
+        <input id={id} name="email" type="email" autocomplete="email" required disabled />
+        <button type="submit" disabled>Sign up</button>
+        <p class="note mono">Signups open at launch.</p>
+      </form>
+    )}
   </div>
 </section>
