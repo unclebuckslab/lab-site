@@ -43,7 +43,7 @@ const page = projectPage(project.id);
 
   {page?.figure && (
     <figure class="figure">
-      <Image src={page.figure.src} alt={page.figure.alt} widths={[680]} sizes="(min-width: 80rem) 75rem, 100vw" />
+      <Image src={page.figure.src} alt={page.figure.alt} widths={[800, 1600, 2176]} sizes="(min-width: 80rem) 75rem, 100vw" />
       <figcaption class="mono secondary">{page.figure.caption}</figcaption>
     </figure>
   )}
