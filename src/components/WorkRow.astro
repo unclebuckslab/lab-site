@@ -17,7 +17,7 @@ const cadence = page?.facts.find((f) => f.label === 'Updated')?.value;
     <p>{project.summary}</p>
     <p class="mono">{statusLabel(project)}{cadence && !project.retired && !project.inLab && ` · Updated: ${cadence}`}</p>
   </div>
-  {page && (
+  {page?.tile && (
     <a class="row-thumb" href={`/projects/${project.id}`} tabindex="-1" aria-hidden="true">
       <Image src={page.tile.src} alt="" widths={[200, 400]} sizes="12.5rem" />
     </a>
