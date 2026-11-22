@@ -1,7 +1,8 @@
 import { getCollection } from 'astro:content';
+import { isPreview } from './env';
 
-// Drafts show on PR previews (Workers Builds sets WORKERS_CI_BRANCH) but not on main.
-const showDrafts = import.meta.env.DEV || (process.env.WORKERS_CI_BRANCH ?? 'main') !== 'main';
+// Drafts show on PR previews but not on main.
+const showDrafts = isPreview;
 
 export async function getThoughts() {
   const posts = await getCollection('thoughts', (p) => showDrafts || !p.data.draft);

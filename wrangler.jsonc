@@ -1,17 +1,30 @@
-// Cloudflare Workers config for the lab site: static assets only, no Worker code.
+// Cloudflare Workers config for the lab site: static assets plus one route, /api/subscribe (worker/index.js).
 // The Worker name must match the one in the Cloudflare dashboard.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "lab-site",
+  "main": "worker/index.js",
   "compatibility_date": "2026-11-21",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+    // Only the signup route runs the Worker first; every other request is served straight from dist/.
+    "run_worker_first": ["/api/*"]
   },
+  // Launch switch, kept in step with SIGNUPS_LAUNCHED in src/lib/env.ts. beehiiv keys are secrets set in the dashboard.
+  // Keep Worker logs (signup errors) in the dashboard under Observability.
+  "observability": { "enabled": true },
+  "vars": { "SIGNUPS_OPEN": "false" },
   // Production lives on unclebuckslab.com, attached in the dashboard. workers.dev is off for production.
   "workers_dev": false,
   // Pull-request previews stay on workers.dev, behind Cloudflare Access.
   "preview_urls": true,
-  "previews": {}
+  // Previews don't inherit production settings. Secrets come from the Previews base in the dashboard,
+  // copied only when a preview is first created: a branch made before a secret was added won't have it.
+  "previews": {
+    "vars": { "SIGNUPS_OPEN": "false" },
+    "observability": { "enabled": true }
+  }
 }

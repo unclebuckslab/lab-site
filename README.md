@@ -32,3 +32,12 @@ Cloudflare Workers static assets (`wrangler.jsonc`), connected to this repo thro
 - `public/_headers` keeps the whole site out of search engines until launch. Remove that rule on launch day.
 - Analytics is Cloudflare Web Analytics, switched on in the dashboard. There is no analytics code here.
 - Rollback: Workers & Pages > lab-site > Deployments > Rollback, then revert the bad commit on `main`.
+
+## Email signup
+
+The signup form posts to `/api/subscribe`, handled by `worker/index.js`, which passes the email to beehiiv's API. The site loads no beehiiv script.
+
+- Secrets go in the Cloudflare dashboard (lab-site → Settings → Variables and Secrets), never in code: `BEEHIIV_API_KEY`, `BEEHIIV_PUBLICATION_ID`. Set them for Production and for the Previews base. A preview copies the base only when it is first created, so a branch pushed before a secret was added won't have it.
+- Until launch, the form works only on PR previews. Preview signups are tagged `utm_source: preview` in beehiiv; delete them before launch.
+- To open signups: set `SIGNUPS_LAUNCHED = true` in `src/lib/env.ts` and `SIGNUPS_OPEN` to `"true"` in `wrangler.jsonc`, in one PR.
+- `npm run test:worker` tests the endpoint against a fake beehiiv.

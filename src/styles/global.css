@@ -121,6 +121,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .signup button:disabled, .signup input:disabled { cursor: not-allowed; }
 .signup .note { flex-basis: 100%; margin: 0.6rem 0 0; }
+.signup .note a { display: inline-flex; align-items: center; min-height: var(--size-tap); }
+.signup .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
 /* Project page */
 .crumbs { padding-top: 2rem; }

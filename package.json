@@ -9,7 +9,8 @@
     "tokens": "node scripts/build-tokens.mjs",
     "check:privacy": "node scripts/check-privacy.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
-    "check": "npm run build && npm run check:privacy && npm run check:a11y"
+    "check": "npm run build && npm run test:worker && npm run check:privacy && npm run check:a11y",
+    "test:worker": "node scripts/test-worker.mjs"
   },
   "repository": {
     "type": "git",
