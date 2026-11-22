@@ -21,5 +21,10 @@
   "workers_dev": false,
   // Pull-request previews stay on workers.dev, behind Cloudflare Access.
   "preview_urls": true,
-  "previews": {}
+  // Previews don't inherit production settings. Secrets come from the Previews base in the dashboard,
+  // copied only when a preview is first created: a branch made before a secret was added won't have it.
+  "previews": {
+    "vars": { "SIGNUPS_OPEN": "false" },
+    "observability": { "enabled": true }
+  }
 }
