@@ -193,3 +193,7 @@ main { padding-bottom: 1rem; }
 .post-body blockquote { margin: 1.5em 0; padding-left: 1.25rem; border-left: var(--size-rule) solid var(--color-rule-strong); color: var(--color-text-secondary); }
 .post-body img { border: var(--size-rule) solid var(--color-rule-strong); }
 .post-body code { font-family: var(--font-mono); font-size: 0.9em; }
+
+/* Feed link on Thoughts */
+.feed { margin: 0.5rem 0 0; font-size: 0.8125rem; }
+.feed a { display: inline-flex; align-items: center; min-height: var(--size-tap); }
