@@ -11,12 +11,17 @@ interface Props {
   title?: string;
   description?: string;
   showDispatchSignup?: boolean;
+  /** Link-preview image under public/, 1200×630. Defaults to the lab card. */
+  image?: string;
+  imageAlt?: string;
 }
 
 const {
   title,
   description = "Uncle Buck's Laboratory: research, analysis and building in public.",
   showDispatchSignup = true,
+  image = '/og/default.png',
+  imageAlt = "Uncle Buck's Laboratory",
 } = Astro.props;
 
 const siteName = "Uncle Buck's Laboratory";
@@ -38,6 +43,15 @@ const year = new Date().getFullYear();
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" type="application/rss+xml" title="Thoughts · Uncle Buck's Laboratory" href="/thoughts/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- Not indexed until launch. Remove at launch (milestone L1). -->
     <meta name="robots" content="noindex" />
   </head>

@@ -5,6 +5,7 @@ import Signup from '../../components/Signup.astro';
 import Kind from '../../components/Kind.astro';
 import { getProjects, statusLabel, type Project } from '../../lib/projects';
 import { projectPage } from '../../data/project-pages';
+import { existsSync } from 'node:fs';
 
 export function getStaticPaths() {
   return getProjects().map((project) => ({ params: { id: project.id }, props: { project } }));
@@ -13,8 +14,10 @@ export function getStaticPaths() {
 interface Props { project: Project }
 const { project } = Astro.props;
 const page = projectPage(project.id);
+// Share image drawn by `npm run og`; a project added since then uses the default card.
+const ogImage = existsSync(`public/og/${project.id}.png`) ? `/og/${project.id}.png` : undefined;
 ---
-<Base title={project.name} description={project.summary}>
+<Base title={project.name} description={project.summary} image={ogImage} imageAlt={project.name}>
   <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/projects">Work</a> / {project.name}</nav>
 
   <header class="project-head">

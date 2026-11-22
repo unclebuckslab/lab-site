@@ -1,0 +1,6 @@
+# Crawlers may read every page. Until launch, each page also says noindex (header and meta tag),
+# so nothing is listed in search yet. See LAUNCH.md.
+User-agent: *
+Allow: /
+
+Sitemap: https://unclebuckslab.com/sitemap-index.xml

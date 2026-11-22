@@ -10,7 +10,8 @@
     "check:privacy": "node scripts/check-privacy.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
     "check": "npm run build && npm run test:worker && npm run check:privacy && npm run check:a11y",
-    "test:worker": "node scripts/test-worker.mjs"
+    "test:worker": "node scripts/test-worker.mjs",
+    "og": "node scripts/og-images.mjs"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/unclebuckslab/lab-site#readme",
   "dependencies": {
+    "@astrojs/rss": "4.0.19",
+    "@astrojs/sitemap": "3.7.6",
     "@fontsource-variable/fraunces": "5.3.0",
     "@fontsource-variable/ibm-plex-sans": "5.3.0",
     "@fontsource/ibm-plex-mono": "5.3.0",

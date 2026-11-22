@@ -20,3 +20,6 @@ Run before asking for review. CI runs the same.
 - `npm run check:privacy`: fails if any private registry value is in `dist/`.
 - `npm run check:a11y`: axe WCAG 2.2 AA on every page, light and dark, desktop and phone, plus the 44px tap-target rule. Locally, set `CHROME_PATH` if Playwright's Chromium isn't installed.
 - `npm run check`: all of the above.
+- `npm run og`: redraws the link-preview images in `public/og/`. Run it when a project is added or its name or summary changes; commit the PNGs.
+
+Going live follows `LAUNCH.md`.

@@ -8,6 +8,7 @@ const posts = await getThoughts();
   <div class="page-head">
     <h1>Thoughts</h1>
     <p class="lede">Notes, essays and things learned along the way. <span class="pending">[VOICE PENDING]</span></p>
+    <p class="mono feed"><a href="/thoughts/rss.xml">RSS feed</a></p>
   </div>
   {posts.length === 0 ? (
     <p class="mono secondary empty">Nothing posted yet.</p>
