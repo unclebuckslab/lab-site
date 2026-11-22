@@ -38,7 +38,9 @@ export async function subscribe(request, env, fetchImpl = fetch) {
   if (!EMAIL.test(email) || email.length > 254 || !LISTS.has(list)) return redirect(url, '/signup/error');
 
   if (!env.BEEHIIV_API_KEY || !env.BEEHIIV_PUBLICATION_ID) {
-    console.error('subscribe: beehiiv secrets are not set');
+    // Lengths and types only, never values.
+    const shape = (v) => (v === undefined ? 'undefined' : `${typeof v} length ${String(v).length}`);
+    console.error(`subscribe: beehiiv secrets are not set (API key: ${shape(env.BEEHIIV_API_KEY)}; publication ID: ${shape(env.BEEHIIV_PUBLICATION_ID)}; env keys: ${Object.keys(env).join(', ')})`);
     return redirect(url, '/signup/error');
   }
 
