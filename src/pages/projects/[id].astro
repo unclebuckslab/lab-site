@@ -28,10 +28,10 @@ const ogImage = existsSync(`public/og/${project.id}.png`) ? `/og/${project.id}.p
       <p class="summary">{project.summary}</p>
       <p class="mono secondary">from Uncle Buck&rsquo;s Laboratory · {statusLabel(project)}</p>
     </div>
-    {project.publicUrl && (
+    {(project.publicUrl || page?.secondaryLink) && (
       <div class="actions">
-        <a class="button primary" href={project.publicUrl}>Open {project.name.split(' ')[0] === 'Denver' ? 'the dashboard' : project.name}</a>
-        {page?.secondaryLink && <a class="button" href={page.secondaryLink.href}>{page.secondaryLink.label}</a>}
+        {project.publicUrl && <a class="button primary" href={project.publicUrl}>Open {project.name.split(' ')[0] === 'Denver' ? 'the dashboard' : project.name}</a>}
+        {page?.secondaryLink && <a class={project.publicUrl ? 'button' : 'button primary'} href={page.secondaryLink.href}>{page.secondaryLink.label}</a>}
       </div>
     )}
   </header>

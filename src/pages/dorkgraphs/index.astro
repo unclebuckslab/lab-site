@@ -1,0 +1,33 @@
+---
+import '../../styles/dorkgraphs.css';
+import Base from '../../layouts/Base.astro';
+import { getReports } from '../../lib/dorkgraphs';
+import { formatDate } from '../../lib/thoughts';
+
+const reports = await getReports();
+---
+<Base title="DorkGraphs" description="Reports on the numbers behind living in America now, from Uncle Buck's Laboratory." feeds={[{ title: "DorkGraphs · Uncle Buck's Laboratory", href: '/dorkgraphs/rss.xml' }]}>
+  <div class="page-head">
+    <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/projects/dorkgraphs">About DorkGraphs</a></nav>
+    <h1>DorkGraphs</h1>
+    <p class="lede">The numbers behind living in America now. <span class="pending">[VOICE PENDING]</span></p>
+    <p class="mono feed"><a href="/dorkgraphs/rss.xml">RSS feed</a></p>
+  </div>
+  {reports.length === 0 ? (
+    <p class="mono secondary empty">No reports yet.</p>
+  ) : (
+    <ul class="rows" aria-label="Reports">
+      {reports.map((r) => (
+        <li class="row">
+          <span class="row-num mono"><time datetime={r.data.date.toISOString().slice(0, 10)}>{formatDate(r.data.date)}</time></span>
+          <div class="row-body">
+            {r.data.format && <p class="mono dg-kicker">{r.data.format}</p>}
+            <h2 class="post-title"><a href={`/dorkgraphs/${r.id}`}>{r.data.title}</a></h2>
+            <p>{r.data.dek}</p>
+            {r.data.draft && <p class="mono">Draft · not on the live site</p>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>

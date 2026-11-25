@@ -107,9 +107,9 @@ export const PROJECT_PAGES: Record<string, ProjectPage> = {
   },
   dorkgraphs: {
     facts: [
-      { label: 'Where', value: 'Instagram, @dorkgraphs' },
-      { label: 'Cadence', value: 'Daily' },
-      { label: 'Launch', value: 'January 2027' },
+      { label: 'Where', value: 'Reports here, posts on Instagram @dorkgraphs' },
+      { label: 'Cadence', value: 'One report a week' },
+      { label: 'Launch', value: 'January 11, 2027' },
       { label: 'Price', value: 'Free' },
     ],
     howMade: [
@@ -122,8 +122,9 @@ export const PROJECT_PAGES: Record<string, ProjectPage> = {
         label: 'Checks',
         text: 'Reviewers run as separate agents and never grade their own work: one tests every finding, one checks every chart is clear and honest, one scores the finished post.',
       },
-      { label: 'Human check', text: 'A person gives final approval on every post.' },
+      { label: 'Human check', text: 'A person gives final approval on every report and post.' },
     ],
+    secondaryLink: { label: 'Read the reports', href: '/dorkgraphs' },
   },
 };
 
