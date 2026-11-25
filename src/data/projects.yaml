@@ -49,12 +49,12 @@ projects:
     working_name: false
     endorsement: from Uncle Buck's Laboratory
     type: brand
-    stage: define
+    stage: build
     status: in-the-lab
     show_on_site: true
     priority: 5
     public_url: null
-    summary: Daily charts and maps of the American experience, showing how the country got here and where it's headed.
+    summary: Weekly reports on the numbers behind living in America now, with the charts cut into posts for Instagram.
   - id: music-oracle
     name: Music prediction brand
     working_name: true
