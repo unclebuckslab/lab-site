@@ -28,3 +28,8 @@
 .dg-data th, .dg-data td { text-align: right; padding: 0.35rem 0.6rem; border-bottom: 1px solid var(--color-rule); white-space: nowrap; }
 .dg-data th:first-child { text-align: left; }
 .dg-data thead th { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; color: var(--color-text-secondary); }
+
+/* Drafts only: the Instagram set under the report (dorkgraphs report playbook §9). */
+.dg-preview { margin-top: 3rem; padding-top: 1.5rem; border-top: 3px dashed var(--color-rule-strong); }
+.dg-slides { list-style: none; margin: 1rem 0 1.5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 0.75rem; }
+.dg-slides img { display: block; width: 100%; height: auto; border: var(--size-rule) solid var(--color-rule-strong); }

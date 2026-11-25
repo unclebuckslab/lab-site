@@ -80,3 +80,22 @@ Some of the growth from 2021 to 2025 was not people gaining coverage. CMS ended 
 ## Corrections
 
 None yet.
+
+<section class="dg-preview" aria-labelledby="dg-preview-h">
+<h2 id="dg-preview-h">Instagram set (preview only)</h2>
+<p class="mono">Shown on drafts only. Removed when the report is published.</p>
+<ol class="dg-slides"><li><img src="/dorkgraphs-preview/obamacare-forecasts/01_two_misses.png" alt="Slide 1: Instagram render of 01 two misses" width="1080" height="1350" loading="lazy"></li><li><img src="/dorkgraphs-preview/obamacare-forecasts/02_people_not_price.png" alt="Slide 2: Instagram render of 02 people not price" width="1080" height="1350" loading="lazy"></li><li><img src="/dorkgraphs-preview/obamacare-forecasts/03_the_bill.png" alt="Slide 3: Instagram render of 03 the bill" width="1080" height="1350" loading="lazy"></li><li><img src="/dorkgraphs-preview/obamacare-forecasts/05_states.png" alt="Slide 4: Instagram render of 05 states" width="1080" height="1350" loading="lazy"></li></ol>
+
+---
+
+
+**Carousel:** slide 1 chart 1 (with kicker), slide 2 chart 2, slide 3 chart 3, slide 4 chart 5, last slide: "The full report is at unclebuckslab.com/dorkgraphs" (URL to confirm with the site build).
+
+**Caption options (finding first, then source):**
+1. CBO expected 24 million people in the Obamacare marketplaces by 2019. It got 9.8 million. Then every forecast we checked from 2018 to 2023 came in too low. Source: CBO, CMS.
+2. The 2010 forecast for Obamacare was about twice too high. The later ones were too low. Enrollment peaked at 22.1 million in 2025, and this year the count is falling again. Source: CBO, CMS.
+3. Four years of less than half the forecast, then five years of beating it. The extra subsidies ended in 2025, and nearly every state lost enrollees in February. Source: CBO, CMS.
+
+**Alt text, chart 1:** Line chart of marketplace enrollment, 2014 to 2026. A dashed orange line shows CBO's 2010 forecast rising to 24 million by 2019. A teal line shows actual enrollment flat near 10 million from 2016 to 2020, then rising to 22.1 million in 2025. Short gray lines show later CBO forecasts, most sitting below the teal line after 2019. A hollow point marks 19.2 million in February 2026, one month, preliminary.
+
+</section>
