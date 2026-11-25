@@ -1,0 +1,30 @@
+/* DorkGraphs section. Page chrome uses the lab's tokens; charts keep DorkGraphs' own style (CLAUDE.md:
+   "Product and brand output keeps its own style"): each chart SVG carries its own paper and colors from
+   dorkgraphs templates/tokens.json and is set in Inter, so it looks the same here as on Instagram. */
+
+.dg-kicker { margin: 0 0 0.4rem; color: var(--color-text-secondary); text-transform: none; }
+.dg-report .post-head h1 { font-size: clamp(2rem, 5.5vw, 3.25rem); }
+.dg-dek { font-size: 1.1875rem; line-height: 1.5; color: var(--color-text-secondary); margin: 0 0 0.9rem; }
+
+.dg-figure { margin: 2.25rem 0; }
+.dg-fig-title { font-family: 'Inter Variable', 'Inter', var(--font-sans); font-weight: 800; font-size: clamp(1.25rem, 3vw, 1.6rem); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 0.3rem; }
+.dg-fig-sub { font-family: 'Inter Variable', 'Inter', var(--font-sans); font-size: 1rem; line-height: 1.4; color: var(--color-text-secondary); margin: 0 0 0.75rem; }
+.dg-frame { border: var(--size-rule) solid var(--color-rule-strong); line-height: 0; }
+.dg-svg { display: block; width: 100%; height: auto; }
+.dg-narrow { display: none; }
+@media (max-width: 40rem) {
+  .dg-wide { display: none; }
+  .dg-narrow { display: block; }
+}
+.dg-figure figcaption { margin-top: 0.6rem; font-family: 'Inter Variable', 'Inter', var(--font-sans); font-size: 0.875rem; line-height: 1.45; color: var(--color-text-secondary); }
+.dg-figure figcaption p { margin: 0 0 0.2rem; }
+.dg-foot { font-style: italic; }
+
+.dg-data { margin-top: 0.5rem; font-size: 0.9375rem; }
+.dg-data summary { display: inline-flex; align-items: center; min-height: var(--size-tap); cursor: pointer; font-family: var(--font-mono); font-size: 0.8125rem; }
+.dg-table-wrap { overflow-x: auto; max-height: 24rem; overflow-y: auto; border-top: var(--size-rule) solid var(--color-rule); }
+.dg-table-wrap:focus-visible { outline: 2px solid var(--color-accent); }
+.dg-data table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.dg-data th, .dg-data td { text-align: right; padding: 0.35rem 0.6rem; border-bottom: 1px solid var(--color-rule); white-space: nowrap; }
+.dg-data th:first-child { text-align: left; }
+.dg-data thead th { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; color: var(--color-text-secondary); }

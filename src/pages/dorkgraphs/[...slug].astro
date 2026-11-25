@@ -1,0 +1,33 @@
+---
+import '@fontsource-variable/inter';
+import '../../styles/dorkgraphs.css';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getReports } from '../../lib/dorkgraphs';
+import { formatDate } from '../../lib/thoughts';
+
+export async function getStaticPaths() {
+  const reports = await getReports();
+  return reports.map((report) => ({ params: { slug: report.id }, props: { report } }));
+}
+
+const { report } = Astro.props;
+const { Content } = await render(report);
+const d = report.data;
+---
+<Base title={d.title} description={d.dek} feeds={[{ title: "DorkGraphs · Uncle Buck's Laboratory", href: '/dorkgraphs/rss.xml' }]}>
+  <article class="post dg-report">
+    <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/dorkgraphs">DorkGraphs</a> / Report {String(d.number).padStart(3, '0')}</nav>
+    <header class="post-head">
+      {d.format && <p class="mono dg-kicker">{d.format}</p>}
+      <h1>{d.title}</h1>
+      <p class="dg-dek">{d.dek}</p>
+      <p class="mono secondary">
+        <time datetime={d.date.toISOString().slice(0, 10)}>{formatDate(d.date)}</time>
+        {d.updated && <> · Updated <time datetime={d.updated.toISOString().slice(0, 10)}>{formatDate(d.updated)}</time></>}
+        {' '}· DorkGraphs, from Uncle Buck&rsquo;s Laboratory{d.draft && ' · Draft'}
+      </p>
+    </header>
+    <div class="post-body"><Content /></div>
+  </article>
+</Base>
